@@ -1,0 +1,61 @@
+menu "Split Flap"
+
+    config WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            Network name to connect to
+
+    config WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2)
+
+    config DNS_HOSTNAME
+        string "Hostname"
+        default "splitflap"
+        help
+            Hostname that users can find Split Flap on their local network (same subnet only). 
+            Split flap can be found at <hostname>.local
+    
+    config DNS_NAME
+        string "Device Name"
+        default "Split Flap"
+        help
+            Name of the device / service on the network
+    
+    config UNITS_COUNT
+        int "Number of units"
+        default 10
+        range 1 100
+        help
+            Total number of units in the split flap.
+            To adjust the number of flaps including what is on each flap, update the letters.hpp file.
+    
+    config UNITS_STEP_DELAY_US
+        int "Step delay in microseconds"
+        default 2500
+        range 500 10000
+        help
+            Minimum delay in microseconds between motor steps. Lower numbers are faster.
+    
+    config UNITS_DIRECTION
+        bool "Invert direction of the steppers to go 'forward' through the flaps."
+        default false
+        help
+            If the motor goes the wrong direction, toggle this option
+    
+    config TIME_ZONE
+        string "Timezone"
+        default "GMT0BST,M3.5.0/1,M10.5.0"
+        help
+            Timezone string for your timezone. See: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
+
+    config NTP_SERVER
+        string "NTP Server"
+        default "pool.ntp.org"
+        help
+            Hostname of the NTP server to get the current time from
+
+endmenu
